@@ -4,7 +4,7 @@ A HTML5 jQuery plugin that adds a Table of common intervals, chords and scales. 
 
 Work in progress...
 
-see demo here : http://zskilz.github.io/intervalChordScaleTable
+see demo here : http://zskilz.github.io/intervalChordScaleTable/
 
 ## Using
 
