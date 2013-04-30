@@ -1,0 +1,11 @@
+.intervalTable th {
+	border-bottom: 1px solid black;
+	border-right: 1px solid black;
+	padding: 0px 2px;
+}
+.intervalTable {
+	text-align: center;
+}
+.darkRow {
+	background: #bbb;
+}
