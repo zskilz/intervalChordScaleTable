@@ -3,24 +3,23 @@
     overflow: auto;
     width: 620px;
     border: 1px solid black;
-	padding: 2px 2px;
+    padding: 2px 2px;
 }
-
-.intervalTable table{
+.intervalTable .interval {
+    width: 100px;
+}
+.intervalTable table {
     text-align: center;
     table-layout: fixed;
 }
-
 .intervalTable th {
-	border-bottom: 1px solid black;
-	border-right: 1px solid black;
-	padding: 0px 2px;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    padding: 0px 2px;
 }
-
 .intervalTable td {
     font-size:90%;
 }
-
 .intervalTable .darkRow {
-	background: #bbb;
+    background: #bbb;
 }
