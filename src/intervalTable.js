@@ -23,24 +23,25 @@
 (function($) {
 
     var defaultOptions = {
-        legend : 'Intervals Table'
+        legend: 'Intervals Table'
     };
 
     var ns = 'intervalTable';
-    
+
     var _mh = require("musicHelper");
     var _a = require("audioHelper");
     var currKeyIndex = 0;
 
     var methods = {
-        init : function(options) {
+        init: function(options) {
 
             var _opt = $.extend({}, defaultOptions, options);
-            
+
             var audio = _a.initAudio();
 
             return this.each(function() {
-                var $this = $(this), data = $this.data(ns);
+                var $this = $(this),
+                    data = $this.data(ns);
                 // If the plugin hasn't been initialized yet
 
                 if (!data) {
@@ -87,13 +88,15 @@
                     })
                     //setup the chords and scales
                     //headings
-                    var numScales = 0, numChords = 0;
+                    var numScales = 0,
+                        numChords = 0;
                     $.each(_mh.Chords, function(ind, obj) {
                         numChords++;
                         var html
                         if (audio.audioSupported) {
                             html = '<button class="chord">' + ind + '</button>';
-                        } else {
+                        }
+                        else {
                             html = ind;
                         }
                         chordsScales.append('<th>' + html + '</th>');
@@ -104,7 +107,8 @@
                         var html
                         if (audio.audioSupported) {
                             html = '<button class="scale">' + ind + '</button>';
-                        } else {
+                        }
+                        else {
                             html = ind;
                         };
                         chordsScales.append('<th>' + html + '</th>');
@@ -124,7 +128,7 @@
                         }
                         row.append(N);
                         N = $('<td/>');
-                        N.html(_mh.Intervals[i]);
+                        N.html('<button class="interval">' + _mh.Intervals[i] + '</button>');
                         row.append(N);
                         $.each(_mh.Chords, function(ind, obj) {
                             N = $('<td/>');
@@ -154,6 +158,12 @@
 
                             }
                         });
+                        $this.find('.interval').click(function(e) {
+                            var interval = _mh.Intervals.indexOf($(this).html());
+                            var F = 2 * Math.pow(2, interval / 12);
+                            audio.playNote(2, currKeyIndex, 0);
+                            audio.playNote(F, currKeyIndex, 0);
+                        });
                         $this.find('.scale').click(function(e) {
                             var scale = _mh.Scales[$(this).html()];
                             var time = audio.audioCtx.currentTime;
@@ -171,7 +181,7 @@
                     }
 
                     $(this).data(ns, {
-                        target : $this
+                        target: $this
                     });
                 }
 
@@ -179,11 +189,12 @@
 
         },
 
-        destroy : function() {
+        destroy: function() {
 
             return this.each(function() {
 
-                var $this = $(this), data = $this.data(ns);
+                var $this = $(this),
+                    data = $this.data(ns);
 
                 $(window).unbind('.' + ns);
                 //data.xxx.remove();
@@ -197,9 +208,11 @@
 
         if (methods[method]) {
             return methods[method].apply(this, Array.prototype.slice.call(arguments, 1));
-        } else if ( typeof method === 'object' || !method) {
+        }
+        else if (typeof method === 'object' || !method) {
             return methods.init.apply(this, arguments);
-        } else {
+        }
+        else {
             $.error('Method ' + method + ' does not exist on jQuery.' + ns);
         }
 
