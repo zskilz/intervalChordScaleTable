@@ -560,19 +560,21 @@ define('audioHelper',{
 
                 if (!data) {
                     // Setup
+                    var intervalTable = $('<div/>').addClass('intervalTable');
                     var dominant = $('<div/>').addClass('dominant').html('Dominant Note:');
-                    var intervalTable = $('<table/>').addClass('intervalTable');
+                    var theTable = $('<table/>');
                     var heading = $('<tr><th rowspan="2">Note Number</th><th rowspan="2">Pitch</th><th rowspan="2">Interval name</th></tr>');
                     var chordsScales = $('<tr/>').addClass('chordsScales');
 
                     //add to dom
-                    intervalTable.append(heading);
-                    intervalTable.append(chordsScales);
+                    theTable.append(heading);
+                    theTable.append(chordsScales);
 
-                    $this.append(dominant);
-                    $this.append(intervalTable);
-                    $this.append($('<div/>').addClass('legend').html(_opt.legend));
+                    intervalTable.append(dominant);
+                    intervalTable.append(theTable);
+                    intervalTable.append($('<div/>').addClass('legend').html(_opt.legend));
 
+                    $this.append(intervalTable)
                     //setup logic
 
                     var dominantSelect = $('<select/>');
@@ -584,7 +586,7 @@ define('audioHelper',{
 
                     dominantSelect.change(function() {
                         currKeyIndex = _mh.SciNotes.indexOf($(this).val());
-                        var rows = intervalTable.find('tr');
+                        var rows = theTable.find('tr');
                         rows.removeClass('darkRow');
                         $.each(rows, function(ind, row) {
                             if (ind > 1) {
@@ -651,7 +653,7 @@ define('audioHelper',{
                             row.append(N);
                         })
 
-                        intervalTable.append(row);
+                        theTable.append(row);
                     }
                     //add audio support to Table 1.
 
