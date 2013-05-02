@@ -69,13 +69,9 @@ define({
 
                     noteSource.noteOn(t);
                 }
-
-                return AudioComponent;
-
             }
-
         }
-        return null;
+        return AudioComponent;
     },
 
 })

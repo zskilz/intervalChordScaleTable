@@ -503,13 +503,9 @@ define('audioHelper',{
 
                     noteSource.noteOn(t);
                 }
-
-                return AudioComponent;
-
             }
-
         }
-        return null;
+        return AudioComponent;
     },
 
 });
@@ -643,7 +639,11 @@ define('audioHelper',{
                         }
                         row.append(N);
                         N = $('<td/>');
-                        N.html('<button class="interval">' + _mh.Intervals[i] + '</button>');
+                        var html = _mh.Intervals[i];
+                        if (audio.audioSupported) {
+                            html = '<button class="interval">' + html + '</button>';
+                        }
+                        N.html(html);
                         row.append(N);
                         $.each(_mh.Chords, function(ind, obj) {
                             N = $('<td/>');
