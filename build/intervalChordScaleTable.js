@@ -475,7 +475,7 @@ define('audioHelper',{
                 var audioCtx, toneBuffer, mainVol, compressor;
 
                 var sampleRate = audioCtx.sampleRate;
-                mainVol = audioCtx.createGainNode();
+                mainVol = audioCtx.createGain();
                 // Connect MainVol to final destination (will throw error if outputAudioNode incorrect type )
                 if (outputAudioNode !== undefined) mainVol.connect(outputAudioNode);
                 else mainVol.connect(audioCtx.destination);
@@ -501,7 +501,7 @@ define('audioHelper',{
 
                     noteSource.playbackRate.value = F * Math.pow(2, BaseIndex / 12);
 
-                    noteSource.noteOn(t);
+                    noteSource.start(t);
                 }
             }
         }
