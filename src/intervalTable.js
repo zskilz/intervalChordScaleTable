@@ -76,7 +76,9 @@
                         rows.removeClass('darkRow');
                         $.each(rows, function(ind, row) {
                             if (ind > 1) {
-                                var note = _mh.SciNotes[(14 - ind + currKeyIndex) % 12];
+                                var SciInd = (14 - ind + currKeyIndex) % 12;
+                                SciInd = SciInd<0?12+SciInd:SciInd;
+                                var note = _mh.SciNotes[SciInd];
                                 $(row).find('.pitch').html(note);
                                 if (note.length > 1) {
                                     $(row).addClass('darkRow');
@@ -115,7 +117,7 @@
                     })
                     heading.append('<th colspan="' + numScales + '">Scales</th>');
                     //table values
-                    for (var row, i = 12; i >= 0; i--) {
+                    for (var row, i = 24; i >= 0; i--) {
                         row = $('<tr/>');
                         var N = $('<td/>');
                         N.html('N<sub>' + i + '</sub>');
@@ -153,7 +155,7 @@
                     if (audio.audioSupported) {
                         $this.find('.chord').click(function(e) {
                             var chord = _mh.Chords[$(this).html()];
-                            for (var noteNum = 0; noteNum <= 12; noteNum++) {
+                            for (var noteNum = 0; noteNum <= 24; noteNum++) {
                                 var noteOn = chord[noteNum];
                                 if (noteOn) {
                                     var F = 2 * Math.pow(2, noteNum / 12);
@@ -172,7 +174,7 @@
                             var scale = _mh.Scales[$(this).html()];
                             var time = audio.audioCtx.currentTime;
                             var nn = 0;
-                            for (var noteNum = 0; noteNum <= 12; noteNum++) {
+                            for (var noteNum = 0; noteNum <= 24; noteNum++) {
                                 var noteOn = scale[noteNum];
                                 if (noteOn) {
                                     var F = 2 * Math.pow(2, noteNum / 12);
