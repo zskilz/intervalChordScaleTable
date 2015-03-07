@@ -407,9 +407,13 @@ var requirejs, require, define;
 
 define("almond", function(){});
 
-define('musicHelper',{
+/*define({
     SciNotes: ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"],
-    Intervals: ["Unison", "minor 2nd", "Major 2nd", "minor 3rd", "Major 3rd", "4th", "Tritone", "5th", "minor 6th", "Major 6th", "minor 7th", "Major 7th", "Octave", "minor 9th", "Major 9th"],
+  //  Intervals: ["Unison", "minor 2nd", "Major 2nd", "minor 3rd", "Major 3rd", "4th", 
+  //  "Tritone", "5th", "minor 6th", "Major 6th", "minor 7th", "Major 7th", "Octave", 
+  //  "minor 9th", "Major 9th","minor 10th", "Major 10th", "11th", "Who Knows?", "12th","minor 13th","Major 13th", "minor 14th", "Major 14th", "2Octave"],
+   
+    Intervals: ["Unison", "minor 2nd", "Major 2nd", "minor 3rd", "Major 3rd", "4th", "Tritone", "5th", "minor 6th", "Major 6th", "minor 7th", "Major 7th", "Octave","Flat 9th","Major 9th","Flat 10th","Major 10th","11th","Flat 12th","12th","Flat 13th","13th","Flat 14th","14th","Octave2"],
     Chords: {
 
         Dim: [1, 0, 0, 1, 0, 0, 1],
@@ -428,6 +432,43 @@ define('musicHelper',{
         HarmonicMinor: [1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1],
         Dorian: [1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1],
         Mixolydian: [1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1],
+    }
+
+
+});*/
+
+define('musicHelper',{
+    SciNotes: ["A", "A#", "B", "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#"],
+    Intervals: ["Unison", "minor 2nd", "Major 2nd", "minor 3rd", "Major 3rd", "4th", "Tritone", "5th", "minor 6th", "Major 6th", "minor 7th", "Major 7th", "Octave","Flat 9th","Major 9th","Flat 10th","Major 10th","11th","Flat 12th","12th","Flat 13th","13th","Flat 14th","14th","Octave2"],
+    Chords: {
+
+        Dim: [1, 0, 0, 1, 0, 0, 1],
+        Min: [1, 0, 0, 1, 0, 0, 0, 1],
+        Maj: [1, 0, 0, 0, 1, 0, 0, 1],
+        Aug: [1, 0, 0, 0, 1, 0, 0, 0, 1],
+		MajSixth: [1, 0, 0, 0, 1, 0, 0, 1, 0, 1],
+		MajSixthAddNinth: [1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1],
+		Dim7: [1, 0, 0, 1, 0, 0, 1, 0, 0, 1],
+		Min7: [1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1],
+        Dom7: [1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1],
+		Maj7: [1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1],
+		AddNinth: [1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+		Dom9: [1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1],
+	    Major9: [1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1],
+		Dom7Flat9: [1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1],
+		Dom13:[1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+		Maj13:[1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+
+    },
+    Scales: {
+        Major: [1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1],
+		Dorian: [1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1],
+		Phrygian: [1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1],
+		Lydian: [1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1],
+        NaturalMinor: [1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1],
+        HarmonicMinor: [1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1],
+        Mixolydian: [1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1],
+		Locrian: [1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1, 0, 1],
     }
 
 
@@ -587,7 +628,9 @@ define('audioHelper',{
                         rows.removeClass('darkRow');
                         $.each(rows, function(ind, row) {
                             if (ind > 1) {
-                                var note = _mh.SciNotes[(14 - ind + currKeyIndex) % 12];
+                                var SciInd = (14 - ind + currKeyIndex) % 12;
+                                SciInd = SciInd<0?12+SciInd:SciInd;
+                                var note = _mh.SciNotes[SciInd];
                                 $(row).find('.pitch').html(note);
                                 if (note.length > 1) {
                                     $(row).addClass('darkRow');
@@ -626,7 +669,7 @@ define('audioHelper',{
                     })
                     heading.append('<th colspan="' + numScales + '">Scales</th>');
                     //table values
-                    for (var row, i = 12; i >= 0; i--) {
+                    for (var row, i = 24; i >= 0; i--) {
                         row = $('<tr/>');
                         var N = $('<td/>');
                         N.html('N<sub>' + i + '</sub>');
@@ -664,7 +707,7 @@ define('audioHelper',{
                     if (audio.audioSupported) {
                         $this.find('.chord').click(function(e) {
                             var chord = _mh.Chords[$(this).html()];
-                            for (var noteNum = 0; noteNum <= 12; noteNum++) {
+                            for (var noteNum = 0; noteNum <= 24; noteNum++) {
                                 var noteOn = chord[noteNum];
                                 if (noteOn) {
                                     var F = 2 * Math.pow(2, noteNum / 12);
@@ -683,7 +726,7 @@ define('audioHelper',{
                             var scale = _mh.Scales[$(this).html()];
                             var time = audio.audioCtx.currentTime;
                             var nn = 0;
-                            for (var noteNum = 0; noteNum <= 12; noteNum++) {
+                            for (var noteNum = 0; noteNum <= 24; noteNum++) {
                                 var noteOn = scale[noteNum];
                                 if (noteOn) {
                                     var F = 2 * Math.pow(2, noteNum / 12);
